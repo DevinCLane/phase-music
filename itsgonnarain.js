@@ -3,6 +3,8 @@
 // create an audio context https://developer.mozilla.org/en-US/docs/Web/API/AudioContext
 const audioCtx = new AudioContext();
 
+
+
 async function getSound() {
     // define our audio file
     const sound = 'can-i-still-walk-2022-11-28.mp3'
@@ -23,10 +25,15 @@ async function getSound() {
         sourceNode.connect(audioCtx.destination);
         // start the music
         sourceNode.start();
+        // grab the stop button
+        const stop = document.getElementById('stop')
+        // add event listener
+        stop.addEventListener('click', () => {
+            // stop the music if we click
+            sourceNode.stop();
+        })
         // just in case something goes wrong
     } catch (error) {
         console.log(error)
     }
 }
-
-getSound()
