@@ -1,7 +1,5 @@
 // inspiration from https://teropa.info/blog/2016/07/28/javascript-systems-music.html
 
-console.log('hi')
-
 // create an audio context https://developer.mozilla.org/en-US/docs/Web/API/AudioContext
 const audioCtx = new AudioContext();
 
@@ -11,11 +9,20 @@ async function getSound() {
     try {
         // use the Fetch API to request the audio file
         const response = await fetch(sound)
-        // await the response, invoke arrayBuffer() method, to use the binary ArrayBuffer object 
+        // await the response, invoke arrayBuffer() method, to use the binary ArrayBuffer object, which is a generic, fixed-length raw binary data buffer
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
         const arrayBuffer = await response.arrayBuffer()
+        // call the decodeAudioData method from the audio context to turn the mp3 arraybuffer into a decoded audiobuffer
         const audioBuffer = await audioCtx.decodeAudioData(arrayBuffer)
-        // once all this is done, we log to make sure it worked
-        return console.log('decoded', audioBuffer)
+        // buffer source knows how to play an AudioBuffer
+        // this AudioBufferSourceNode reacts in in the AudioBuffer data and streams it to other notes.
+        let sourceNode = audioCtx.createBufferSource();
+        // give the buffersource the audio buffer we have
+        sourceNode.buffer = audioBuffer;
+        // connect the buffer source to our audio context's destination (the speakers)
+        sourceNode.connect(audioCtx.destination);
+        // start the music
+        sourceNode.start();
         // just in case something goes wrong
     } catch (error) {
         console.log(error)
