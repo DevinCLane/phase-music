@@ -21,10 +21,19 @@ async function getSound() {
         let sourceNode = audioCtx.createBufferSource();
         // give the buffersource the audio buffer we have
         sourceNode.buffer = audioBuffer;
+        // let's loop the audio
+        sourceNode.loop = true;
+        // set our loop start and stop points;
+        const loopStart = 2.22
+        const loopEnd = 2.9
+        sourceNode.loopStart = loopStart;
+        sourceNode.loopEnd = loopEnd;
         // connect the buffer source to our audio context's destination (the speakers)
         sourceNode.connect(audioCtx.destination);
-        // start the music
-        sourceNode.start();
+        // start the music, only play between our loops
+        // first argument is when to start playing, we set to 0 to say immediately
+        // second argument is the offset of how far in to our song to start playing, we set to the loop beginning
+        sourceNode.start(0, loopStart);
         // grab the stop button
         const stop = document.getElementById('stop')
         // add event listener
