@@ -1,5 +1,24 @@
 {
   "dependencies": {
     "@picocss/pico": "^1.5.6"
-  }
+  },
+  "name": "its-gonna-rain",
+  "description": "JavaScript Systems music",
+  "version": "1.0.0",
+  "main": "itsgonnarain.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevinCLane/its-gonna-rain.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DevinCLane/its-gonna-rain/issues"
+  },
+  "homepage": "https://github.com/DevinCLane/its-gonna-rain#readme"
 }
