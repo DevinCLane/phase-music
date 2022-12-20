@@ -5,10 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>It's gonna rain</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
 </head>
 <body>
-    <button id="start" onClick="getSound()">Play</button>
-    <button id="stop">Stop</button>
+    <main class="container" >
+        <h1>JavaScript Systems music</h1>
+        <button id="start" onClick="getSound()">Play</button>
+        <button id="stop">Stop</button>
+        <!-- Range slider -->
+        <label for="loopStart">Loop start
+            <input type="range" min="0" max="23" value="3" step="0.01" id="loopStart" name="loopStart" data-tooltip="value">
+        </label>
+        <label for="loopEnd">Loop end
+            <input type="range" min="0" max="23" value="3" step="0.01" id="loopEnd" name="loopEnd" data-tooltip="value">
+        </label>
+    </main>
     <script src="itsgonnarain.js"></script>
 </body>
 </html>
