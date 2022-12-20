@@ -3,7 +3,7 @@
 // create an audio context https://developer.mozilla.org/en-US/docs/Web/API/AudioContext
 const audioCtx = new AudioContext();
 
-function startLoop(audioBuffer, pan = 0) {
+function startLoop(audioBuffer, pan = 0, rate = 1) {
         // buffer source knows how to play an AudioBuffer
         // this AudioBufferSourceNode reacts in in the AudioBuffer data and streams it to other notes.
         const sourceNode = audioCtx.createBufferSource();
@@ -18,11 +18,13 @@ function startLoop(audioBuffer, pan = 0) {
         sourceNode.loop = true;
 
         // set our loop start and stop points;
-        const loopStart = 2.22
-        const loopEnd = 2.9
+        const loopStart = 2.1
+        const loopEnd = 3.2
         sourceNode.loopStart = loopStart;
         sourceNode.loopEnd = loopEnd;
 
+        // set playback rate
+        sourceNode.playbackRate.value = rate;
         // set the panning to pan value
         pannerNode.pan.value = pan;
 
@@ -58,8 +60,10 @@ async function getSound() {
         const audioBuffer = await audioCtx.decodeAudioData(arrayBuffer)
 
         // call our start loop function to start the audio loop
-        startLoop(audioBuffer)
-        startLoop(audioBuffer)
+        // 2nd argument is for panning (-1 is left 1 is right)
+        // 3rd argument is playback rate
+        startLoop(audioBuffer, -1)
+        startLoop(audioBuffer, 1, 1.02);
 
         // just in case something goes wrong
     } catch (error) {
