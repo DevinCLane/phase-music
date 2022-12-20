@@ -4,26 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>It's gonna rain</title>
+    <title>⏈ Phase Music in JavaScript ⏈</title>
     <link rel="stylesheet" href="/node_modules/@picocss/pico/css/pico.css">
     <!-- <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"> -->
     <link rel="stylesheet" href="styles/style.css">
+
+    <!-- open graph tags -->
+    <meta property="og:site_name" content="Devin Lane" />
+    <meta property=“og:title” content="Phase music with JavaScipt" />
+    <meta property="og:description" content="Creating phase music in JavaScript with the web audio API" />
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="" />
+    <meta property="og:image:secure_url" content="" />
+    <meta property="og:image:width" content="" />
+    <meta property="og:image:height" content="" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:image" content="" />
+    <meta property="twitter:site" content="@DevinCLane" />
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
     <main class="container">
-        <h1>JavaScript Systems music</h1>
+        <h1>⏈ Phase Music in JavaScript ⏈</h1>
         <section>
             <button id="start" onClick="getSound()">Play</button>
             <button id="stop">Stop</button>
         </section>
         <section>
             <h2>What is this?</h2>
-            <p>Following inspiration from <a href="https://teropa.info/blog/2016/07/28/javascript-systems-music.html" target="_blank">Tero Parviainen's</a> writing on <a href="https://en.wikipedia.org/wiki/Systems_music" target="_blank">"systems music"</a>, I've created loop music in the spirit of Steve Reich's <a href="https://en.wikipedia.org/wiki/It%27s_Gonna_Rain">It's Gonna Rain.</a> Systems music explores how a process applied to sound creates slowly evolving changes.</p>
-            <p>I discovered Tero's work when he was a judge for <a href="https://bitrate.devpost.com/" target="_blank">BitRate</a>, Google Magenta's music and machine learning hackathon. My team won the contest for our work on <a href="https://deardiary.ai/">Dear Diary</a>, which I detailed <a href="https://magenta.tensorflow.org/dear-diary" target="_blank">here</a>.</p>
+            <p>Following inspiration from <a href="https://teropa.info/blog/2016/07/28/javascript-systems-music.html" target="_blank">Tero Parviainen's</a> writing on <a href="https://en.wikipedia.org/wiki/Systems_music" target="_blank">"systems music"</a>, I've created <a href="https://en.wikipedia.org/wiki/Phase_music" target="_blank">phase music</a> in the spirit of Steve Reich's <a href="https://en.wikipedia.org/wiki/It%27s_Gonna_Rain">It's Gonna Rain.</a></p>
+            <p>Systems music explores how a process applied to sound creates slowly evolving changes. Phase music explores how two identical musical phrases played with a steady, but slightly different, tempo on two different instruments creates new rhythms and harmonies.</p>
+            <p>I discovered Tero's work when he was a judge for <a href="https://bitrate.devpost.com/" target="_blank">BitRate</a>, Google Magenta's music and machine learning hackathon. My team won the contest for our work on <a href="https://deardiary.ai/">Dear Diary</a> in 2020, which I detailed <a href="https://magenta.tensorflow.org/dear-diary" target="_blank">here</a>.</p>
         </section>
         <section>
             <h2>Why make this?</h2>
-            <p>I'm interested in exploring web audio as a compositional tool. This includes, for example: systems music, generative music, and effects processing--viewing code as a musical instrument and the web as a musical medium.</p>
+            <p>I'm interested in exploring web audio as a compositional tool. This includes, for example: systems music, generative music, data sonification, and effects processing--viewing code as a musical instrument and the web as a musical medium.</p>
             <p>I intend tools like these to enable new musical expression for both experienced and novice musicians.</p>
         </section>
         <section>
@@ -31,7 +52,7 @@
             <ul>
                 <li>I wrote a piece of music and took a small snipped as a loop.</li>
                 <li>Two identical loops of this piece are played, one panned to your left speaker, one panned to your right speaker (because of this, the effects will be more pronounced on headphones or two individual stereo speakers.)</li>
-                <li>The playback speeds slightly differ between the two loops, which causes their <a href="https://en.wikipedia.org/wiki/Phase_music">phase</a> to shift over time, resulting in new harmonies and rhythms as they grow out of alignment and back again.</li>
+                <li>The playback speeds differ slightly between the two loops, which causes their <a href="https://en.wikipedia.org/wiki/Phase_(waves)" target="_blank">phase</a> to shift over time, resulting in new harmonies and rhythms as they grow out of alignment and back again.</li>
             </ul>
         </section>
         <section>
@@ -47,6 +68,19 @@
                     <li>Importantly, we build a <code>stop</code> button, which calls the <code>.stop()</code> method on our <code>sourceNode</code>.</li>
                 </ol>
             </p>
+        </section>
+        <section>
+            <h2>What optimizations would you build with more time?</h2>
+            <p>Some features that I haven't built that would be nice:</p>
+            <ul>
+                <li>Allow users to upload their own audio files</li>
+                <li>Add user control for the loop start and stop points</li>
+                <li>Add user control for the audio playback speed</li>
+                <li>Add user control for the panning</li>
+                <li>Add a record feature, allowing downloadable audio files</li>
+                <li>Allow users to create accounts and save their work</li>
+                <li>Allow users to share their work with a link to the site</li>
+            </ul>
         </section>
         <footer>
             Made by <a href="https://www.devinlane.com/" target="_blank">Devin Lane</a>
