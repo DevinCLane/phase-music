@@ -7,19 +7,57 @@
     <title>It's gonna rain</title>
     <link rel="stylesheet" href="/node_modules/@picocss/pico/css/pico.css">
     <!-- <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"> -->
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <main class="container" >
+    <main class="container">
         <h1>JavaScript Systems music</h1>
-        <button id="start" onClick="getSound()">Play</button>
-        <button id="stop">Stop</button>
-        <!-- Range slider -->
+        <section>
+            <button id="start" onClick="getSound()">Play</button>
+            <button id="stop">Stop</button>
+        </section>
+        <section>
+            <h2>What is this?</h2>
+            <p>Following inspiration from <a href="https://teropa.info/blog/2016/07/28/javascript-systems-music.html" target="_blank">Tero Parviainen's</a> writing on <a href="https://en.wikipedia.org/wiki/Systems_music" target="_blank">"systems music"</a>, I've created loop music in the spirit of Steve Reich's <a href="https://en.wikipedia.org/wiki/It%27s_Gonna_Rain">It's Gonna Rain.</a> Systems music explores how a process applied to sound creates slowly evolving changes.</p>
+            <p>I discovered Tero's work when he was a judge for <a href="https://bitrate.devpost.com/" target="_blank">BitRate</a>, Google Magenta's music and machine learning hackathon. My team won the contest for our work on <a href="https://deardiary.ai/">Dear Diary</a>, which I detailed <a href="https://magenta.tensorflow.org/dear-diary" target="_blank">here</a>.</p>
+        </section>
+        <section>
+            <h2>Why make this?</h2>
+            <p>I'm interested in exploring web audio as a compositional tool. This includes, for example: systems music, generative music, and effects processing--viewing code as a musical instrument and the web as a musical medium.</p>
+            <p>I intend tools like these to enable new musical expression for both experienced and novice musicians.</p>
+        </section>
+        <section>
+            <h2>How does it work?</h2>
+            <ul>
+                <li>I wrote a piece of music and took a small snipped as a loop.</li>
+                <li>Two identical loops of this piece are played, one panned to your left speaker, one panned to your right speaker (because of this, the effects will be more pronounced on headphones or two individual stereo speakers.)</li>
+                <li>The playback speeds slightly differ between the two loops, which causes their <a href="https://en.wikipedia.org/wiki/Phase_music">phase</a> to shift over time, resulting in new harmonies and rhythms as they grow out of alignment and back again.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>How did you make it?</h2>
+            <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API" target="_blank">Web audio API</a> and JavaScript play central roles here. As previously mentioned, <a href="https://teropa.info/blog/2016/07/28/javascript-systems-music.html">Tero's blog</a> was an invaluable resource in building this.
+                <ol>
+                    <li>We set up an <a href="https://developer.mozilla.org/en-US/docs/Web/API/AudioContext" target="_blank"><code>AudioContext()</code></a></li>
+                    <li>When <code>play</code> is pressed, a function <code>getSound</code> is called, which uses the Fetch API to grab the audio file.</li>
+                    <li>The audio file is fed into a raw <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer" target="_blank"><code>ArrayBuffer</code></a> object, then we call the <code>decodeAudioData()</code> method to decode the audio data from the <code>ArrayBuffer</code>. This is our <code>audioBuffer</code>.</li>
+                    <li>We call a separate function <code>startLoop</code> twice, panning one loop hard left, one hard right. We set the playback speed of one loop ~0.005 faster than the other.</li>
+                    <li>Within <code>startLoop</code> we call <a href="https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode"><code>AudioBufferSourceNode</code></a>, which reads our <code>audioBuffer</code>.</li>
+                    <li>We then set up our panning, our loop points, and we connect the nodes to the destination of our <code>AudioContext</code>.</li>
+                    <li>Importantly, we build a <code>stop</code> button, which calls the <code>.stop()</code> method on our <code>sourceNode</code>.</li>
+                </ol>
+            </p>
+        </section>
+        <footer>
+            Made by <a href="https://www.devinlane.com/" target="_blank">Devin Lane</a>
+        </footer>
+        <!-- Range slider
         <label for="loopStart">Loop start
             <input type="range" min="0" max="23" value="3" step="0.01" id="loopStart" name="loopStart" data-tooltip="value">
         </label>
         <label for="loopEnd">Loop end
             <input type="range" min="0" max="23" value="3" step="0.01" id="loopEnd" name="loopEnd" data-tooltip="value">
-        </label>
+        </label> -->
     </main>
     <script src="itsgonnarain.js"></script>
 </body>

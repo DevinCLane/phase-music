@@ -3,21 +3,6 @@
 // create an audio context https://developer.mozilla.org/en-US/docs/Web/API/AudioContext
 const audioCtx = new AudioContext();
 
-// set our loop start and stop points;
-let loopStart = 1.9
-const loopStartRange = document.getElementById('loopStart')
-loopStartRange.addEventListener('change', () => {
-    loopStart = loopStartRange.value;
-    console.log(loopStartRange.value)
-})
-
-let loopEnd = 3.2
-const loopEndRange = document.getElementById('loopEnd')
-loopEndRange.addEventListener('change', () => {
-    loopEnd = loopEndRange.value;
-    console.log(loopEndRange.value)
-})
-
 function startLoop(audioBuffer, pan = 0, rate = 1) {
         // buffer source knows how to play an AudioBuffer
         // this AudioBufferSourceNode reacts in in the AudioBuffer data and streams it to other notes.
@@ -31,20 +16,10 @@ function startLoop(audioBuffer, pan = 0, rate = 1) {
 
         // let's loop the audio
         sourceNode.loop = true;
+
         // set our loop start and stop points;
         let loopStart = 1.9
-        const loopStartRange = document.getElementById('loopStart')
-        loopStartRange.addEventListener('change', () => {
-            loopStart = loopStartRange.value;
-            console.log(loopStartRange.value)
-        })
-
         let loopEnd = 3.2
-        const loopEndRange = document.getElementById('loopEnd')
-        loopEndRange.addEventListener('change', () => {
-            loopEnd = loopEndRange.value;
-            console.log(loopEndRange.value)
-        })
 
         sourceNode.loopStart = loopStart;
         sourceNode.loopEnd = loopEnd;
@@ -89,7 +64,7 @@ async function getSound() {
         // 2nd argument is for panning (-1 is left 1 is right)
         // 3rd argument is playback rate
         startLoop(audioBuffer, -1)
-        startLoop(audioBuffer, 1, 1.002);
+        startLoop(audioBuffer, 1, 1.008);
 
         // just in case something goes wrong
     } catch (error) {
