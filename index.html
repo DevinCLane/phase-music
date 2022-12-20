@@ -31,6 +31,7 @@
 <body>
     <main class="container">
         <h1>⏈ Phase Music in JavaScript ⏈</h1>
+        <p>by <a href="https://www.devinlane.com/" target="_blank">Devin Lane</a></p>
         <section>
             <button id="start" onClick="getSound()">Play</button>
             <button id="stop">Stop</button>
@@ -38,8 +39,8 @@
         <section>
             <h2>What is this?</h2>
             <p>Following inspiration from <a href="https://teropa.info/blog/2016/07/28/javascript-systems-music.html" target="_blank">Tero Parviainen's</a> writing on <a href="https://en.wikipedia.org/wiki/Systems_music" target="_blank">"systems music"</a>, I've created <a href="https://en.wikipedia.org/wiki/Phase_music" target="_blank">phase music</a> in the spirit of Steve Reich's <a href="https://en.wikipedia.org/wiki/It%27s_Gonna_Rain">It's Gonna Rain.</a></p>
-            <p>Systems music explores how a process applied to sound creates slowly evolving changes. Phase music explores how two identical musical phrases played with a steady, but slightly different, tempo on two different instruments creates new rhythms and harmonies.</p>
-            <p>I discovered Tero's work when he was a judge for <a href="https://bitrate.devpost.com/" target="_blank">BitRate</a>, Google Magenta's music and machine learning hackathon. My team won the contest for our work on <a href="https://deardiary.ai/">Dear Diary</a> in 2020, which I detailed <a href="https://magenta.tensorflow.org/dear-diary" target="_blank">here</a>.</p>
+            <p>Systems music explores how a process applied to sound creates slowly evolving changes. Phase music explores how two identical musical phrases played with a steady, but slightly different, tempo on two different instruments creates new rhythms and harmonies over time.</p>
+            <p>I discovered Tero's work when he was a judge for <a href="https://bitrate.devpost.com/" target="_blank">BitRate</a>, <a href="https://magenta.tensorflow.org/" target="_blank">Google Magenta</a>'s music and machine learning hackathon. My team won the contest for our work on <a href="https://deardiary.ai/">Dear Diary</a> in 2020, which I detailed <a href="https://magenta.tensorflow.org/dear-diary" target="_blank">here</a>.</p>
         </section>
         <section>
             <h2>Why make this?</h2>
@@ -49,7 +50,7 @@
         <section>
             <h2>How does it work?</h2>
             <ul>
-                <li>I wrote a piece of music and took a small snipped as a loop.</li>
+                <li>I wrote a piece of music and took a small snippet as a loop.</li>
                 <li>Two identical loops of this piece are played, one panned to your left speaker, one panned to your right speaker (because of this, the effects will be more pronounced on headphones or two individual stereo speakers.)</li>
                 <li>The playback speeds differ slightly between the two loops, which causes their <a href="https://en.wikipedia.org/wiki/Phase_(waves)" target="_blank">phase</a> to shift over time, resulting in new harmonies and rhythms as they grow out of alignment and back again.</li>
             </ul>
