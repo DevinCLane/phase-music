@@ -3,6 +3,9 @@
 // create an audio context https://developer.mozilla.org/en-US/docs/Web/API/AudioContext
 const audioCtx = new AudioContext();
 
+// grab the stop button
+const stop = document.getElementById('stop')
+
 function startLoop(audioBuffer, pan = 0, rate = 1) {
         // buffer source knows how to play an AudioBuffer
         // this AudioBufferSourceNode reacts in in the AudioBuffer data and streams it to other notes.
@@ -39,19 +42,22 @@ function startLoop(audioBuffer, pan = 0, rate = 1) {
         // second argument is the offset of how far in to our song to start playing, we set to the loop beginning
         sourceNode.start(0, loopStart)
 
-        // grab the stop button
-        const stop = document.getElementById('stop')
-        // add event listener
+        // add event listener to the stop button
         stop.addEventListener('click', () => {
             // stop the music if we click
             sourceNode.stop();
         })
 }
 
+
+
 async function getSound() {
     // define our audio file
     const sound = 'can-i-still-walk-2022-11-28.mp3'
     try {
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
         // use the Fetch API to request the audio file
         const response = await fetch(sound)
         // await the response, invoke arrayBuffer() method, to use the binary ArrayBuffer object, which is a generic, fixed-length raw binary data buffer
